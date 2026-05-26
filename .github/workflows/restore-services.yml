@@ -29,7 +29,8 @@ jobs:
           echo "Actual:   ${ACTUAL_SHA}"
           test "${ACTUAL_SHA}" = "${EXPECTED_SHA}"
           echo "Archive listing preview:"
-          tar -tJf /tmp/services-folder.tar.xz | head -50
+          tar -tJf /tmp/services-folder.tar.xz > /tmp/services-archive-list.txt
+          head -50 /tmp/services-archive-list.txt
           rm -rf services
           tar -xJf /tmp/services-folder.tar.xz
           test -f services/api/package.json
