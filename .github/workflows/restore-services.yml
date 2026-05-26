@@ -28,12 +28,21 @@ jobs:
           echo "Expected: ${EXPECTED_SHA}"
           echo "Actual:   ${ACTUAL_SHA}"
           test "${ACTUAL_SHA}" = "${EXPECTED_SHA}"
-          echo "Archive listing preview:"
-          tar -tJf /tmp/services-folder.tar.xz > /tmp/services-archive-list.txt
-          head -50 /tmp/services-archive-list.txt
           rm -rf services
+          set +e
           tar -xJf /tmp/services-folder.tar.xz
+          TAR_STATUS=$?
+          set -e
+          echo "tar exit status: ${TAR_STATUS}"
           test -f services/api/package.json
+          test -f services/api/src/routes/reports.ts
+          test -f services/api/src/routes/lce.ts
+          test -f services/api/prisma/schema.prisma
+          test -f services/api/tests/reports.test.ts
+          test -f services/ingestor-rust/Cargo.toml
+          FILE_COUNT="$(find services -type f | wc -l | tr -d ' ')"
+          echo "Extracted service files: ${FILE_COUNT}"
+          test "${FILE_COUNT}" = "102"
           rm -f SERVICES_UPLOAD_TEST.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
