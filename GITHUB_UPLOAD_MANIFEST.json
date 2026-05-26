@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-05-26T05:46:09+00:00",
+  "type": "github-upload",
+  "rootFolder": "market-strategy-github-upload",
+  "includesLockedLceSdk": true,
+  "lockedLceSdkSha256": "d25ac66018311f7cf047bdce376bc88a070a0a761f3b1e25733bf8ddc13e6baf",
+  "excludedFromThisZip": [
+    "phase archive folders",
+    "master bundle wrapper folders",
+    "preview-only archive folders"
+  ],
+  "recommendedRepoName": "market-strategy",
+  "finalQaFixesIncluded": true,
+  "renderYamlIncluded": true,
+  "hiddenFilesIncluded": [
+    ".env.example",
+    ".github/workflows/ci.yml"
+  ],
+  "fixedAt": "2026-05-26T07:11:06+00:00",
+  "backendTypecheckPassed": true,
+  "backendBuildPassed": true,
+  "backendTestsPassed": "17 files, 28 tests",
+  "webTypecheckPassed": true,
+  "webRoutesVerified": [
+    "/",
+    "/replay",
+    "/research",
+    "/lce",
+    "/production"
+  ],
+  "webNextBuildStatus": "compiled, but timed out/hung during Next.js Collecting page data in container; see FINAL_QA_REPORT.md"
+}

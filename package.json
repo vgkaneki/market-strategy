@@ -1,0 +1,24 @@
+{
+  "name": "market-strategy-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lce:install": "node scripts/install-lce-sdk.mjs",
+    "lce:verify": "node scripts/verify-lce-sdk.mjs",
+    "api:install": "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install --prefix services/api --no-audit --no-fund --prefer-offline",
+    "api:generate": "npm run prisma:generate --prefix services/api",
+    "api:typecheck": "npm run typecheck --prefix services/api",
+    "api:build": "npm run build --prefix services/api",
+    "api:test": "npm test --prefix services/api",
+    "api:start": "npm run start --prefix services/api",
+    "web:install": "npm install --prefix apps/web --no-audit --no-fund --prefer-offline",
+    "web:typecheck": "npm run typecheck --prefix apps/web",
+    "web:build": "npm run build --prefix apps/web",
+    "web:start": "npm run start --prefix apps/web",
+    "verify:local": "npm run lce:install && npm run lce:verify && npm run api:install && npm run api:typecheck && npm run api:build && npm run api:test && npm run web:install && npm run web:typecheck && npm run web:verify-routes",
+    "web:verify-routes": "npm run verify:routes --prefix apps/web",
+    "web:safe-build": "npm run render:safe-build --prefix apps/web",
+    "web:next-build": "npm run build --prefix apps/web"
+  }
+}

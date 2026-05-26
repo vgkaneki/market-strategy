@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: market-strategy-api
+    runtime: node
+    plan: starter
+    buildCommand: node scripts/install-lce-sdk.mjs && npm install --prefix services/api && npm run prisma:generate --prefix services/api && npm run build --prefix services/api
+    startCommand: npm run start --prefix services/api
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_PORT
+        value: 8787
+      - key: AUTH_JWT_SECRET
+        sync: false
+      - key: POSTGRES_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: CLICKHOUSE_URL
+        sync: false
+      - key: CLICKHOUSE_USER
+        value: default
+      - key: CLICKHOUSE_PASSWORD
+        sync: false
+      - key: CLICKHOUSE_DATABASE
+        value: market_strategy
+      - key: CUSTODY_ENABLED
+        value: false
+      - key: CUSTODY_DRY_RUN
+        value: true
+      - key: PDF_EXPORT_ENABLED
+        value: false
+
+  - type: web
+    name: market-strategy-web
+    runtime: node
+    plan: starter
+    rootDir: apps/web
+    buildCommand: npm install && npm run render:safe-build
+    startCommand: npm run dev -- -H 0.0.0.0
+    envVars:
+      - key: NEXT_PUBLIC_API_BASE
+        sync: false
