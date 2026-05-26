@@ -1,0 +1,17 @@
+{
+  "name": "Market Strategy LCE SDK",
+  "version": "1.1.1",
+  "marketDataOnly": true,
+  "tradingDisabled": true,
+  "packages": [
+    "@market-strategy/lce-core",
+    "@market-strategy/lce-adapters",
+    "@market-strategy/lce-engines",
+    "@market-strategy/lce-market-decision",
+    "@market-strategy/lce-replay",
+    "@market-strategy/lce-validation"
+  ],
+  "engineCoverage": "all required engine categories registered",
+  "marketDecisionEngine": "registered",
+  "replayValidation": "included"
+}

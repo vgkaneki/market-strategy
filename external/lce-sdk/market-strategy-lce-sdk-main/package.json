@@ -1,0 +1,25 @@
+{
+  "name": "market-strategy-lce-sdk",
+  "version": "1.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Portable Liquidity Confluence Engine SDK for crypto market-structure platforms.",
+  "workspaces": [
+    "packages/lce-core",
+    "packages/lce-adapters",
+    "packages/lce-engines",
+    "packages/lce-market-decision",
+    "packages/lce-replay",
+    "packages/lce-validation"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check-all.mjs",
+    "audit:engines": "node scripts/audit-engine-coverage.mjs",
+    "demo:node": "node examples/node-basic/demo.mjs",
+    "demo:decision": "node examples/market-decision-basic/demo.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {},
+  "devDependencies": {}
+}

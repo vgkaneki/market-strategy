@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market Strategy Market Decision",
+  "type": "object",
+  "required": ["symbol", "timeframe", "decision", "confidence", "marketDataOnly", "noOrderExecution"],
+  "properties": {
+    "symbol": { "type": "string" },
+    "timeframe": { "type": "string" },
+    "decision": { "type": "string" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 100 },
+    "zoneLow": { "type": ["number", "null"] },
+    "zoneHigh": { "type": ["number", "null"] },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "enginesUsed": { "type": "array", "items": { "type": "string" } },
+    "marketDataOnly": { "const": true },
+    "noOrderExecution": { "const": true }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market Strategy Engine Output",
+  "type": "object",
+  "required": ["engineId", "symbol", "timeframe", "side", "price", "strength"],
+  "properties": {
+    "engineId": { "type": "string" },
+    "symbol": { "type": "string" },
+    "timeframe": { "type": "string" },
+    "side": { "enum": ["demand", "supply", "neutral"] },
+    "price": { "type": "number" },
+    "strength": { "type": "number", "minimum": 0, "maximum": 100 }
+  }
+}

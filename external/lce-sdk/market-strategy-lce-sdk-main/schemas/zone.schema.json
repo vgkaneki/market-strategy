@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market Strategy LCE Zone",
+  "type": "object",
+  "required": ["id", "symbol", "timeframe", "side", "price", "zoneLow", "zoneHigh", "strength", "sources", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "symbol": { "type": "string" },
+    "timeframe": { "type": "string" },
+    "side": { "enum": ["demand", "supply", "neutral"] },
+    "price": { "type": "number" },
+    "zoneLow": { "type": "number" },
+    "zoneHigh": { "type": "number" },
+    "strength": { "type": "number", "minimum": 0, "maximum": 100 },
+    "sources": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string" }
+  }
+}
