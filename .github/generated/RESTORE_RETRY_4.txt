@@ -1,0 +1,1 @@
+fresh restore run after switching to extracted-file validation
