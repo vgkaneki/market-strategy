@@ -1,0 +1,39 @@
+services:
+  api:
+    build:
+      context: ../../
+      dockerfile: infra/production/services/api.Dockerfile
+    restart: unless-stopped
+    env_file: ../../.env
+    depends_on:
+      - redis
+      - clickhouse
+    ports:
+      - "8787:8787"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+  web:
+    build:
+      context: ../../
+      dockerfile: infra/production/apps/web.Dockerfile
+    restart: unless-stopped
+    env_file: ../../.env
+    ports:
+      - "3000:3000"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144

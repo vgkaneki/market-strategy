@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: market-strategy-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: market-strategy-api
+  template:
+    metadata:
+      labels:
+        app: market-strategy-api
+    spec:
+      containers:
+        - name: api
+          image: market-strategy-api:latest
+          ports:
+            - containerPort: 8787
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8787
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8787
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "2"
+              memory: "2Gi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
