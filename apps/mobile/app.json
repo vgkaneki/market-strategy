@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Market Strategy",
+    "slug": "market-strategy-mobile",
+    "version": "0.5.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "assetBundlePatterns": ["**/*"],
+    "ios": { "supportsTablet": true },
+    "android": { "adaptiveIcon": { "backgroundColor": "#07101d" } }
+  }
+}

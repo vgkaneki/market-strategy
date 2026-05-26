@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #07090f; color: #e8edf5; font-family: Inter, system-ui, sans-serif; }
+button { background: #151b2b; color: #e8edf5; border: 1px solid #26324d; border-radius: 10px; padding: 8px 12px; }
+.panel { background: #0d1320; border: 1px solid #1b2940; border-radius: 16px; padding: 14px; min-height: 240px; }
+.grid { display: grid; grid-template-columns: 1.8fr 0.8fr; grid-template-rows: auto auto auto; gap: 12px; padding: 12px; }
+.header { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-bottom: 1px solid #1b2940; }
+.small { color: #8d9bb3; font-size: 12px; }
+
+select { background: #151b2b; color: #e8edf5; border: 1px solid #26324d; border-radius: 8px; padding: 6px; }
+
+input { background:#0a101b; color:#e8edf5; border:1px solid #1b2940; border-radius:8px; padding:8px; margin:4px 0; width:100%; }
