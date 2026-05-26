@@ -21,13 +21,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          EXPECTED_SHA="41c03f9d49f718764851b1335049978e2cd462039252a569d6bc54d5360e661f"
           cat .github/generated/services-folder.tar.xz.part-*.b64 > /tmp/services-folder.tar.xz.b64
           base64 -d /tmp/services-folder.tar.xz.b64 > /tmp/services-folder.tar.xz
-          echo "Expected: e2c7ab73d7f275b17d9124efab4025838c026ad6f417fa3b8b68b9f6c5eab1b5"
-          echo "Actual:   $(sha256sum /tmp/services-folder.tar.xz | awk '{print $1}')"
-          test "$(sha256sum /tmp/services-folder.tar.xz | awk '{print $1}')" = "e2c7ab73d7f275b17d9124efab4025838c026ad6f417fa3b8b68b9f6c5eab1b5"
+          ACTUAL_SHA="$(sha256sum /tmp/services-folder.tar.xz | awk '{print $1}')"
+          echo "Expected: ${EXPECTED_SHA}"
+          echo "Actual:   ${ACTUAL_SHA}"
+          test "${ACTUAL_SHA}" = "${EXPECTED_SHA}"
+          echo "Archive listing preview:"
+          tar -tJf /tmp/services-folder.tar.xz | head -50
           rm -rf services
           tar -xJf /tmp/services-folder.tar.xz
+          test -f services/api/package.json
           rm -f SERVICES_UPLOAD_TEST.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
