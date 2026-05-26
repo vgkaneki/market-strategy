@@ -1,4 +1,4 @@
 restore services folder
 archive: services-folder.tar.xz
 sha256: e2c7ab73d7f275b17d9124efab4025838c026ad6f417fa3b8b68b9f6c5eab1b5
-trigger: retry-2
+trigger: retry-after-workflow-update
